@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Конвертер валют</h1>
+  <div>
+    <label>Из:</label>
+    <select [(ngModel)]="fromCurrency">
+      <option *ngFor="let key of objectKeys(currencies)" [value]="key">
+        {{ currencies[key].CharCode }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label>В:</label>
+    <select [(ngModel)]="toCurrency">
+      <option *ngFor="let key of objectKeys(currencies)" [value]="key">
+        {{ currencies[key].CharCode }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label>Сумма:</label>
+    <input type="number" [(ngModel)]="amount">
+  </div>
+  <button (click)="convert()">Конвертировать</button>
+  <div *ngIf="convertedAmount">
+    <h2>Результат: {{ convertedAmount | number:'1.2-2' }}</h2>
+  </div>
+</div>
